@@ -14,12 +14,6 @@ export default function App() {
     return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
 
-  console.log(
-    currentTableData,
-    data,
-    (currentPage - 1) * PageSize + 1,
-    (currentPage - 1) * (PageSize + 1)
-  );
   return (
     <>
       <table>
