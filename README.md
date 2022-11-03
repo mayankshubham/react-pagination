@@ -5,7 +5,7 @@ This hook takes care of the whole pagination related logic and returns an array 
 ## Install
 
 ```
-npm run package-name
+npm install package-name
 ```
 
 ## Usage
