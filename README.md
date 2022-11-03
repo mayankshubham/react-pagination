@@ -1,14 +1,47 @@
-# React Pagination
+# package-name
 
-This project supports two kinds of APIs
+This hook takes care of the whole pagination related logic and returns an array of strings (for dots) and numbers (for pages) which you can use to build fully customizable components.
 
-### usePagination
+## Install
 
-A custom hook that returns you the pagination data which can then be used to create a customized component 
+```
+npm run package-name
+```
 
-### Pagination
+## Usage
 
-A React component that renders the Pagination component and supports previous and next arrow buttons
+```jsx
+import { useState } from "react";
+import usePagination from "package-name";
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-1zaeqk)
+export default function App() {
+  const [page, setPage] = useState(1);
 
+  const pagination = usePagination({
+    currentPage: page,
+    totalPages: 10,
+    siblingsCount: 1, // optional, by default set to 1
+  });
+
+  return (
+    <ul>
+      {pagination.map((strOrNum, index) => (
+        <li key={index}>
+          {typeof strOrNum === "string" ? (
+            <span>{strOrNum}</span>
+          ) : (
+            <button
+              style={{ fontWeight: page === strOrNum ? "bold" : "normal" }}
+              onClick={() => {
+                setPage(strOrNum);
+              }}
+            >
+              {strOrNum}
+            </button>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
